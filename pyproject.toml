@@ -1,0 +1,65 @@
+[project]
+name = "improva"
+version = "0.1.0"
+description = "Clean the survey data of the IMPROVA project"
+authors = [{ name = "Luca Liebsch", email = "luca@factual-consulting.com" }]
+requires-python = ">=3.11, <3.14"
+
+dependencies = [
+    # Core scientific stack
+    "numpy",
+    "pandas",
+    "scipy",
+    "scikit-learn",
+    # Notebook environment
+    "jupyterlab",
+    "ipykernel",
+    "nbformat",
+    # Always included plotting
+    "matplotlib",
+    "plotly",
+    # Passwords
+    "python-dotenv",
+    "openpyxl>=3.1.5",
+]
+
+[project.optional-dependencies]
+geo = [
+    # Geospatial analysis
+    "geopandas>=1.0.1",
+    "shapely",
+    "mapclassify",
+    "tobler",
+    "h3",
+    "pandana",
+    "openrouteservice"
+]
+
+viz = [
+    # Additional visualization
+    "seaborn",
+    "kaleido",
+    "folium",
+    "keplergl",
+    "pydeck"
+]
+
+validation = [
+    # Data validation and profiling
+    "pandera",
+    "pydantic",
+    "ydata-profiling"
+]
+
+dev = [
+    # Development & utilities
+    "requests",
+    "loguru",
+    "unidecode",
+    "pytest",
+    "black",
+    "ruff"
+]
+
+[tool.uv]
+index-url = "https://pypi.org/simple"

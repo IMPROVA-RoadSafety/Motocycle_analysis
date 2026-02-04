@@ -1,0 +1,41 @@
+Metadata-Version: 2.4
+Name: improva
+Version: 0.1.0
+Summary: Clean the survey data of the IMPROVA project
+Author-email: Luca Liebsch <luca@factual-consulting.com>
+Requires-Python: <3.14,>=3.11
+Requires-Dist: numpy
+Requires-Dist: pandas
+Requires-Dist: scipy
+Requires-Dist: scikit-learn
+Requires-Dist: jupyterlab
+Requires-Dist: ipykernel
+Requires-Dist: nbformat
+Requires-Dist: matplotlib
+Requires-Dist: plotly
+Requires-Dist: python-dotenv
+Provides-Extra: geo
+Requires-Dist: geopandas>=1.0.1; extra == "geo"
+Requires-Dist: shapely; extra == "geo"
+Requires-Dist: mapclassify; extra == "geo"
+Requires-Dist: tobler; extra == "geo"
+Requires-Dist: h3; extra == "geo"
+Requires-Dist: pandana; extra == "geo"
+Requires-Dist: openrouteservice; extra == "geo"
+Provides-Extra: viz
+Requires-Dist: seaborn; extra == "viz"
+Requires-Dist: kaleido; extra == "viz"
+Requires-Dist: folium; extra == "viz"
+Requires-Dist: keplergl; extra == "viz"
+Requires-Dist: pydeck; extra == "viz"
+Provides-Extra: validation
+Requires-Dist: pandera; extra == "validation"
+Requires-Dist: pydantic; extra == "validation"
+Requires-Dist: ydata-profiling; extra == "validation"
+Provides-Extra: dev
+Requires-Dist: requests; extra == "dev"
+Requires-Dist: loguru; extra == "dev"
+Requires-Dist: unidecode; extra == "dev"
+Requires-Dist: pytest; extra == "dev"
+Requires-Dist: black; extra == "dev"
+Requires-Dist: ruff; extra == "dev"
