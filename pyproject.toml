@@ -21,6 +21,9 @@ dependencies = [
     # Passwords
     "python-dotenv",
     "openpyxl>=3.1.5",
+    "ftfy>=6.3.1",
+    "seaborn>=0.13.2",
+    "kaleido>=1.2.0",
 ]
 
 [project.optional-dependencies]
