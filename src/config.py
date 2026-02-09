@@ -18,6 +18,9 @@ RAW_DATA_DIR = DATA_DIR / "raw"
 PROCESSED_DATA_DIR = DATA_DIR / "processed"
 EXTERNAL_DATA_DIR = DATA_DIR / "external"
 
+REPORTS_DIR = PROJ_ROOT / "reports"
+FIGURES_DIR = REPORTS_DIR / "figures"
+
 # Notebooks and source directories
 NOTEBOOKS_DIR = PROJ_ROOT / "notebooks"
 SRC_DIR = PROJ_ROOT / "src"
