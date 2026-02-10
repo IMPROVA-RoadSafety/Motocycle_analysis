@@ -862,6 +862,7 @@ source = { virtual = "." }
 dependencies = [
     { name = "ftfy" },
     { name = "ipykernel" },
+    { name = "ipywidgets" },
     { name = "jupyterlab" },
     { name = "kaleido" },
     { name = "matplotlib" },
@@ -870,10 +871,12 @@ dependencies = [
     { name = "openpyxl" },
     { name = "pandas" },
     { name = "plotly" },
+    { name = "plotnine" },
     { name = "python-dotenv" },
     { name = "scikit-learn" },
     { name = "scipy" },
     { name = "seaborn" },
+    { name = "ydata-profiling" },
 ]
 
 [package.optional-dependencies]
@@ -915,6 +918,7 @@ requires-dist = [
     { name = "geopandas", marker = "extra == 'geo'", specifier = ">=1.0.1" },
     { name = "h3", marker = "extra == 'geo'" },
     { name = "ipykernel" },
+    { name = "ipywidgets", specifier = ">=8.1.8" },
     { name = "jupyterlab" },
     { name = "kaleido", specifier = ">=1.2.0" },
     { name = "kaleido", marker = "extra == 'viz'" },
@@ -930,6 +934,7 @@ requires-dist = [
     { name = "pandas" },
     { name = "pandera", marker = "extra == 'validation'" },
     { name = "plotly" },
+    { name = "plotnine", specifier = ">=0.15.3" },
     { name = "pydantic", marker = "extra == 'validation'" },
     { name = "pydeck", marker = "extra == 'viz'" },
     { name = "pytest", marker = "extra == 'dev'" },
@@ -943,6 +948,7 @@ requires-dist = [
     { name = "shapely", marker = "extra == 'geo'" },
     { name = "tobler", marker = "extra == 'geo'" },
     { name = "unidecode", marker = "extra == 'dev'" },
+    { name = "ydata-profiling", specifier = ">=4.18.1" },
     { name = "ydata-profiling", marker = "extra == 'validation'" },
 ]
 provides-extras = ["geo", "viz", "validation", "dev"]
@@ -1686,6 +1692,21 @@ wheels = [
 ]
 
 [[package]]
+name = "mizani"
+version = "0.14.4"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "numpy" },
+    { name = "pandas" },
+    { name = "scipy" },
+    { name = "tzdata", marker = "sys_platform == 'emscripten' or sys_platform == 'win32'" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/a7/02/43fcf763c70e8aa8edc28ac65713daca2c18d3bc2b998af4647966b5bafb/mizani-0.14.4.tar.gz", hash = "sha256:28934d91516d922d7cb0382c82a6c513692abc0174c42a50294ae571520633f9", size = 772490, upload-time = "2026-01-28T14:42:18.108Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/bd/30/b6617c74a8234ff60265373ef730eb6378ccdda74042f51f9ac936191664/mizani-0.14.4-py3-none-any.whl", hash = "sha256:ed72bf249e2a18b5dcc65cd54c7eaa5444b2cb09c7e18aafa2ab6f05f1b78620", size = 133471, upload-time = "2026-01-28T14:42:16.328Z" },
+]
+
+[[package]]
 name = "msgpack"
 version = "1.1.2"
 source = { registry = "https://pypi.org/simple" }
@@ -2348,6 +2369,23 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/e3/4f/8a10a9b9f5192cb6fdef62f1d77fa7d834190b2c50c0cd256bd62879212b/plotly-6.5.2.tar.gz", hash = "sha256:7478555be0198562d1435dee4c308268187553cc15516a2f4dd034453699e393", size = 7015695, upload-time = "2026-01-14T21:26:51.222Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/8a/67/f95b5460f127840310d2187f916cf0023b5875c0717fdf893f71e1325e87/plotly-6.5.2-py3-none-any.whl", hash = "sha256:91757653bd9c550eeea2fa2404dba6b85d1e366d54804c340b2c874e5a7eb4a4", size = 9895973, upload-time = "2026-01-14T21:26:47.135Z" },
+]
+
+[[package]]
+name = "plotnine"
+version = "0.15.3"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "matplotlib" },
+    { name = "mizani" },
+    { name = "numpy" },
+    { name = "pandas" },
+    { name = "scipy" },
+    { name = "statsmodels" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/63/d5/4eeed62b101aa879b87e9bbc9d0650700b5ebd1ffa743902286b039135a2/plotnine-0.15.3.tar.gz", hash = "sha256:2e8130db4673e0daccb1fd1dfc9f2a6cd2e7843b14f861f4ab861dde1639045f", size = 6788365, upload-time = "2026-01-28T16:35:34.708Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/d8/79/eb59d10e13b151a514a8af3b1dcefb5e998b6c8c26bf0cf82d2b98f02c23/plotnine-0.15.3-py3-none-any.whl", hash = "sha256:39fd2ab8b6465275c8a283ce20d4b743dd865e94c74ae7d7d6f21a7eb31f62c1", size = 1332831, upload-time = "2026-01-28T16:35:32.241Z" },
 ]
 
 [[package]]
