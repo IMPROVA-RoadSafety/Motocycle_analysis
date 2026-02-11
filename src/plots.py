@@ -2,6 +2,7 @@ import plotly.express as px
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
+from plotnine import *
 
 
 def usage_summary(df, col_index, values_not_always=[2,3], value_never=4, name=None):
@@ -241,6 +242,71 @@ def plot_satisfaction_bar(
     return fig
 
 
+def plot_satisfaction_bar_plotnine(
+    df,
+    cols,
+    variables_df,
+    title="Satisfaction by Characteristic",
+    split_char="_",
+    stacked=True,
+    title_fontsize=20,
+    tick_fontsize=16,
+    ylabel_fontsize=18
+):
+    # 1. Melt to long format
+    df_long = df[cols].melt(
+        var_name="Characteristic",
+        value_name="SatisfactionScore"
+    ).dropna()
+
+    # 2. Map labels
+    label_map = dict(zip(variables_df["Variable"], variables_df["Etiqueta"]))
+    df_long["Characteristic"] = df_long["Characteristic"].map(label_map).fillna(df_long["Characteristic"])
+
+    # 3. Shorten names
+    df_long["Characteristic"] = df_long["Characteristic"].str.split(split_char).str[0]
+
+    # 4. Aggregate counts
+    df_counts = df_long.groupby(["Characteristic", "SatisfactionScore"]).size().reset_index(name="Count")
+    
+    # 5. Fix the "mizani" palette error: Ensure discrete categories
+    # If SatisfactionScore is numeric, this converts it to strings for a qualitative/diverging scale
+    df_counts["SatisfactionScore"] = pd.Categorical(
+        df_counts["SatisfactionScore"].astype(str).str.replace(".0", "", regex=False)
+    )
+
+    pos = "stack" if stacked else "dodge"
+
+    # 6. Build the plot
+    p = (
+        ggplot(df_counts, aes(x='Characteristic', y='Count', fill='SatisfactionScore'))
+        + geom_col(position=pos)
+        # Using a diverging palette (Green for high satisfaction, Red for low)
+        + scale_fill_brewer(type="div", palette="RdYlGn")
+        + labs(
+            title=title,
+            x=None,
+            y="Count",
+            fill="Score"  # This sets the legend title
+        )
+        + theme_minimal()
+        + theme(
+            figure_size=(14, 8), # Adjusted height for better proportions with a legend
+            plot_title=element_text(size=title_fontsize, margin={'b': 20}, fontweight='bold'),
+            axis_text_x=element_text(rotation=45, hjust=1, size=tick_fontsize),
+            axis_text_y=element_text(size=tick_fontsize),
+            axis_title_y=element_text(size=ylabel_fontsize),
+            legend_position="right", # Legend is now visible on the right
+            legend_title=element_text(size=14, fontweight='bold'),
+            legend_text=element_text(size=12)
+        )
+    )
+
+    return p
+
+# To display it, simply call:
+# fig = plot_satisfaction_bar_plotnine(motocycle_df, ppe_columns, variables_df)
+# print(fig)
 
 def plot_satisfaction_bar_plotly(
     df,
